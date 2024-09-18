@@ -1,0 +1,79 @@
+it's like a tree widget.
+have to include the stuffs/components 
+Because their is platform differences
+can be achieved through conditional programming
+
+in every platform : it has a universal design, can run on all platform .
+
+you need native components -> to enhance the universal design accordingly -> called as conditional programming..
+
+installation procedure :: 
+
+1. On chrome -> download Flutter SDK 
+   go on docs.flutter.dev
+   download the given stable version
+   unzip the file
+
+2. setup the path -> in env variables, 
+
+project structure : 
+  1. .idea folder contains project related settings and files, no need to make manual changes here
+  2. android folder inside it contains android platform specific codes
+  3. Build - to build the project - use while deploying,,
+  4. ios folder contains ios platform specific codes and settings
+  5. lib folder contains the main code of the project.
+  6. test folder is set to contain any set related code.
+  7. .gitignore -> used to ignore unnecessary files , to place it
+  8. .metadata -> data related to the data inside it. regarding setting and settings
+  9. .packages -> preinstalled and user defined packages are 2 types in their
+10.  pubspec.yaml file -> declaration of all the files are done here -> flutter app specific metadata and configurations
+11.  pubspec.lock file will get created on basis of pubspec.yaml file while ora after making changes... But it will be ignored, but it will create pubspec.yaml file accordingly
+12.  pubspec.yaml file is used to declare the dependencies of the project, and the version
+13.  pubspec.lock file is used to lock the version of the dependencies, so that they
+can be used in the project.
+
+ctrl+s to hotReload/hotRestart
+
+sabse jyada kaam aane waale -> pubspec.yaml and lib file will be most useful.
+
+
+/// Dart programming language ///
+dart is a general purpose programming language, developed by google in 2011.
+dart is used to develop flutter apps.
+dart is statically typed language, which means that the type of every expression must be known at compile time
+dart is object oriented language, which means that it supports the concept of classes and objects, strongly typed language.
+dart is a multi-paradigm language, which means that it supports multiple programming paradigms such
+
+compiler compiles -> byte-code -> execute in machine code ->  2 combination of 2 compilers ahead-of-time and just-in-time.
+dart support this both contains and gets > hotReload and hotRestart, considering pne of the few languages.
+
+JIT compilation is used during the development and AOT is used when the app is ready to release.
+
+classes and objects..
+-> common traits among the same species -> can use runtime while creating or using the  function or logic again and again 
+-> encapsulation -> data and methods are hidden from the outside world -> data hiding
+-> inheritance -> one class can inherit the properties and methods of another class -> code reusability
+-> polymorphism -> one class can take the properties and methods of another class -> code reusability
+-> abstraction -> one class can hide the implementation details and show only the functionality -> code reusability
+
+all this is used for reduce redunduncy.
+
+
+
+sample center align code of response..
+
+   // child: Column(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   // mainAxisSize: MainAxisSize.min,
+        //   children: <Widget>[
+        //     // ElevatedButton(onPressed: null, child: Text("Click here")),
+        //     const Text(
+        //       'You have pushed the button this many times:',
+        //     ),
+        //     Text(
+        //       '$_counter',
+        //       style: Theme.of(context).textTheme.headlineMedium,
+        //     ),
+        //   ],
+        // ),
+
