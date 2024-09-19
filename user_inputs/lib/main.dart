@@ -34,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  var _counter = 0;
   var emailText = TextEditingController();
   var passText = TextEditingController();
   final _numberController = TextEditingController();
