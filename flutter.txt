@@ -108,3 +108,99 @@ Navigator: The basic API for navigating between screens.
 Named Routes: A simpler way to manage routing by associating routes with names.
 Router API ( Router and Route Information Parser ): Advanced routing with declarative APIs introduced in Flutter 2 for web and complex navigation use cases.
 
+Models ::
+
+1. Models in Flutter are essential for managing data, business logic, and state in a clean, maintainable, and scalable way. By separating concerns between UI and logic, models make your Flutter apps more modular and easier to test and extend.
+
+2. Types and else :: 
+
+State Management: In libraries like Provider, Riverpod, or Bloc, models often store the application's state and interact with services.
+Form Handling: Models can be used to manage form input, validation, and submission logic.
+Database Integration: Models interact with local databases like SQLite, Hive, or Firebase.
+Animation Management: Models can be used to store and manage animation states in complex animation flows.
+
+3. Models with Provider
+
+import 'package:flutter/material.dart';
+import 'user_model.dart';
+
+class UserApiScreen extends StatefulWidget {
+  @override
+  _UserApiScreenState createState() => _UserApiScreenState();
+}
+
+class _UserApiScreenState extends State<UserApiScreen> {
+  late Future<UserModel> futureUser;
+
+  @override
+  void initState() {
+    super.initState();
+    futureUser = UserModel.fetchUser();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Fetch User Data')),
+      body: Center(
+        child: FutureBuilder<UserModel>(
+          future: futureUser,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Name: ${snapshot.data!.name}'),
+                  Text('Email: ${snapshot.data!.email}'),
+                ],
+              );
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
+            return CircularProgressIndicator();
+          },
+        ),
+      ),
+    );
+  }
+}
+
+void main() => runApp(MaterialApp(home: UserApiScreen()));
+
+->> This example fetches a UserModel from an API and displays the user's name and email in the UI using FutureBuilder.
+The API data is parsed into the UserModel, and the UI is updated once the data is fetched.
+
+
+classes :: : 
+
+Classes in Flutter are indispensable for structuring your code, managing data, and organizing the flow of an application. They work seamlessly with other technologies such as state management, routing, and API services to create well-structured, maintainable, and efficient applications.
+
+it is sued in : :
+
+Widgets: Flutter’s widget system is composed of classes. For instance, StatelessWidget and StatefulWidget are classes that you extend to create your own custom widgets.
+Models: Classes represent structured data, such as user profiles, product lists, or API responses.
+Controllers: Classes manage business logic and application flow.
+Services: You can use classes to handle external services like APIs, databases, or file storage.
+
+Maps and navigators ::
+
+Maps, Navigators, and passing data between screens are core components in Flutter that allow for dynamic, data-driven applications. Maps are useful for managing key-value data, while Navigators provide a powerful way to navigate between screens and transfer data across them efficiently.
+
+Navigator.push: This pushes a new screen onto the navigation stack.
+Navigator.pop: This removes the current screen and returns to the previous screen.
+
+WHy use navigator ::
+
+Screen Navigation: Navigate between different screens or pages in your app.
+Data Passing: Pass data from one screen to another.
+Back Navigation: Handle back navigation or route popping.
+Route Animations: Define custom transitions between screens.
+
+
+WHy used maps :
+
+API Responses: Most JSON API responses are parsed into Dart Maps to handle the key-value structure.
+State Management: Maps are often used to manage and pass structured data in state management systems like Provider or Bloc.
+Form Handling: When dealing with forms, you can use maps to store user input as key-value pairs.
+Configuration Settings: Maps are great for storing app configurations, environment variables, and settings.
+Routing Parameters: When navigating between screens, Maps are used to pass structured data.

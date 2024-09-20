@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Container(height: 15),
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         setState(() {});
                       },
-                      child: Text('Addition'),
+                      child: const Text('Addition'),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         setState(() {});
                       },
-                      child: Text('Sub'),
+                      child: const Text('Sub'),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         setState(() {});
                       },
-                      child: Text('Div'),
+                      child: const Text('Div'),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -129,16 +129,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         setState(() {});
                       },
-                      child: Text('Mul'),
+                      child: const Text('Mul'),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  '$result',
-                  style: TextStyle(fontSize: 24),
+                  result,
+                  style: const TextStyle(fontSize: 24),
                 ),
               )
             ],
