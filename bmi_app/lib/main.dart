@@ -271,7 +271,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: 400,
           // padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -289,7 +289,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   prefixIcon: Icon(Icons.line_weight),
                   border: OutlineInputBorder(),
                 ),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
               ),
               const SizedBox(height: 16),
               TextField(
@@ -299,7 +300,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   prefixIcon: Icon(Icons.height),
                   border: OutlineInputBorder(),
                 ),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
               ),
               const SizedBox(height: 10),
               TextField(
@@ -309,7 +311,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   prefixIcon: Icon(Icons.height),
                   border: OutlineInputBorder(),
                 ),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
               ),
               const SizedBox(height: 16),
               ElevatedButton(

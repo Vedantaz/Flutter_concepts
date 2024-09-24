@@ -33,13 +33,15 @@ class _BMICalculatorState extends State<BMICalculator> {
           children: [
             TextField(
               controller: _weightController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               decoration: const InputDecoration(labelText: 'Weight (kg)'),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _heightController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               decoration: const InputDecoration(labelText: 'Height (m)'),
             ),
             const SizedBox(height: 24),

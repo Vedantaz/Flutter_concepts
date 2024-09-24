@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:screen_switching/user_data.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
