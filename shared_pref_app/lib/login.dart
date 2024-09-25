@@ -1,37 +1,42 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:shared_pref_app/main.dart';
+import 'package:shared_pref_app/MyHomePage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'main.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  @override
-  // void initState() {
-  //   super.initState();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  //   Future.delayed(const Duration(seconds: 2), () {
-  //     Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //           builder: (context) => const MyHomePage(title: 'Shared-Preference')),
-  //     );
-  //   });
-  // }
+  Future<void> _login() async {
+    String email = _emailController.text;
+    String password = _passwordController.text;
 
-  void goToHomePage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => const MyHomePage(title: 'Dashboard')),
-    );
+    // Here, you can add your own authentication logic, e.g., checking against a backend.
+
+    if (email == "test@test.com" && password == "password123") {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
+
+      // Navigate to home page after successful login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const MyHomePage(title: 'Dashboard')),
+      );
+    } else {
+      // Show error or invalid login
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid login credentials')),
+      );
+    }
   }
-
-  bool isLoggedIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,65 +44,77 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         color: Colors.purple,
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Centers the column
-            children: [
-              // Text above the image
-              const Text(
-                'Login',
-                style: TextStyle(
-                  fontSize: 30, // Adjust the font size
-                  fontWeight: FontWeight.bold, // Bold text
-                  color: Colors.white, // White font color
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.person,
+                  size: 100,
+                  color: Colors.white,
                 ),
-              ),
-              const SizedBox(
-                  height: 20), // Adds space between the text and image
-              // Image with animated opacity
-              isLoggedIn
-                  ? ElevatedButton(
-                      onPressed: () {
-                        goToHomePage();
-                      },
-                      child: Text('Go to Home'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 100, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                const SizedBox(height: 20),
+                // Email TextField
+                SizedBox(
+                  width: 400,
+                  child: TextField(
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.email),
+                      hintText: 'Enter your email',
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: const BorderSide(color: Colors.blue),
                       ),
-                    )
-                  : Column(
-                      children: [
-                        TextField(),
-                      ],
+                      filled: true,
+                      fillColor: Colors.white,
                     ),
-
-              AnimatedOpacity(
-                opacity: 1.0, // Initial opacity
-                duration: const Duration(seconds: 1),
-                curve: Curves.easeInOut,
-                child: Image.asset(
-                  '../assets/img/addon.jpg', // Replace with your logo path
-                  width: 200,
-                  height: 200,
-                ),
-              ),
-              ElevatedButton(
-                onPressed: goToHomePage,
-                child: const Text('Login'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+                // Password TextField
+                SizedBox(
+                  width: 400,
+                  child: TextField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.lock),
+                      hintText: 'Enter your password',
+                      labelText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: const BorderSide(color: Colors.blue),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                // Login Button
+                ElevatedButton(
+                  onPressed: _login,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 100,
+                      vertical: 15,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
